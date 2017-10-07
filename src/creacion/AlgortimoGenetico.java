@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Random;
 
-/**Declaracion de la clase adn.
+/**Declaracion de la clase AlgoritmoGenetico.
  * @author Harold Pedraza
  * @version 16/09/2017
  */
@@ -19,10 +19,10 @@ public class AlgortimoGenetico {
 	 static int maximo =0;//variables globales estaticas que dependiendo la cantidad n encuentra el motif mas repetido
 	 static String mottifwinner= null;
 	 static int lineas;
+	
 	 /**metodo para crear el archivo.
 	 *En este metodo se crea el archivo y con cuantas lines queremos que contenga
-	 */
-	    
+	 */    
 	    public AlgortimoGenetico() throws IOException {
 	        BufferedWriter bw = new BufferedWriter(new FileWriter("sequences.umd")); //colocames writer con ruta del archivo hacer con exe
 	        for (int i = 0; i < lineas; i++) {
@@ -32,7 +32,7 @@ public class AlgortimoGenetico {
 	    }
 
 	    /**Metodo en el que crea la secuencia del read.
-	     * En este metodo se crea los numeros aleatoriamente y la secuencia de palabras con tamañño aleatroio.
+	     * En este metodo se crea los numeros aleatoriamente y la secuencia de palabras con tamaÃ±Ã±o aleatroio.
 	     * @return retorna el read nuevamente.
 	     */
 	    public String createExperimentalRad(){
@@ -46,22 +46,21 @@ public class AlgortimoGenetico {
 	    
 	    /**metodo de secuencia.
 	     * Este metodo es el que crea los aleatorios y la secuencia aleatorio de las letras
-	     * @param length, este parametro length es el tamaño que esta en la secuencia
+	     * @param length, este parametro length es el tamaÃ±o que esta en la secuencia
 	     * @return  retorna nuevamente la secuencia
 	     */
 	    public String secuencia (int length){
-	        String secuenci= "";
-	        Random rd = new Random();//generador de aleatorios,   java dock
+	        String secuencia= "";
+	        Random rd = new Random();//generador de aleatorios
 	        for(int i = 0; i < length;i++ ){
-	            //el numero que se coloque no se incluye
 	            switch(rd.nextInt(4)){//tiene 0, 1 2 3
-	                case 0:{secuenci += "A";}break;
-	                case 1:{secuenci += "C";}break;
-	                case 2:{secuenci += "G";}break;
-	                case 3:{secuenci += "T";}break;  
+	                case 0:{secuencia += "A";}break;
+	                case 1:{secuencia += "C";}break;
+	                case 2:{secuencia += "G";}break;
+	                case 3:{secuencia += "T";}break;  
 	            }
 	        }
-	      return secuenci;  
+	      return secuencia;  
 	    }
 	    
 	    /**Metodo en el cual creo el constructor y imprimo las clases creadas anteriormente.
@@ -80,12 +79,11 @@ public class AlgortimoGenetico {
 	        System.out.println("\n* Segun el patron= " +(cf.numberResols(patron))+" veces encontradas");
 	        System.out.println();
 	        System.out.println("\nIngrese cantidad n para buscar el motif mas repetido");
-	        int tamaño_n= Integer.parseInt(br.readLine());
-	        generatePatterns("",tamaño_n);//motif vacio y tamaño
+	        int tamaÃ±o_n= Integer.parseInt(br.readLine());
+	        generatePatterns("",tamaÃ±o_n);//motif vacio y tamaÃ±o
 	        bw.write("\n* El motif mas reptido es "+mottifwinner+" y se repitio "+maximo+" veces\n");
 	        bw.flush();
 	        System.out.println(" ");
-	        //tarea rango de posiciones cuantos reads tiene el motif y comparte posicion por medio de fuerza bruta
 	    }
 	  
 	    /**metodo en el cual obtengo del archivo el patron con mas contains.
@@ -114,14 +112,13 @@ public class AlgortimoGenetico {
 	     * @return retorna a de cero la cantidad de opciones encontradas.
 	     */
 	    public static void generatePatterns(String motif, int length) throws IOException{
-	        //son cuatro letras en una posible varible es 4 a la n para el motif
-	        //funcion recursiva que se llaman a si misma y no se llaman
 	        if (length == 1) {
 	            System.out.println(motif + "A");
 	            System.out.println(motif + "C");
 	            System.out.println(motif + "T");
 	            System.out.println(motif + "G");
 	            //Para imprimir en consola las combinacionales lossibles dependiendo de los paramentros del main
+			
 	            int temp;
 	            AlgortimoGenetico cf = new AlgortimoGenetico();
 	            temp = cf.numberResols(motif + "A");
